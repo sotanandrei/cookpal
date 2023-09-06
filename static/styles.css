@@ -16,3 +16,51 @@
 .carousel-container {
     margin-top: 1rem;
 }
+
+.buttons-container {
+    margin-top: 2rem;
+}
+
+.btn-lg {
+    display: flex;
+    width: 236.8px;
+    height: 86px;
+    padding: 30px 29.8px 30px 29px;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 127%; /* 20.32px */
+}
+
+.btn-red {
+    border-radius: 10px;
+    background: #F6784C;
+    border:#F6784C;
+}
+
+.btn-green {
+    border-radius: 10px;
+    background: #C4D600;
+    border:#C4D600
+}
+
+.btn-orange {
+    border-radius: 10px;
+    background: #EAAA00;
+    border:#EAAA00;
+}
+
+.btn-darkorange {
+    border-radius: 10px;
+    background: #ED8B00;
+    border:#ED8B00;
+}
+
+.btn-lightgreen {
+    border-radius: 10px;
+    background: #84BD00;
+    border:#84BD00;
+}
