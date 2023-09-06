@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block main %}
+
+<!-- CAROUSEL -->
 <div class="container carousel-container">
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -46,4 +48,75 @@
   </button>
 </div>
 </div>
+
+<!-- BUTTONS -->
+<div class="container buttons-container">
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-primary btn-lg btn-red">Recipes & Menus</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary btn-lg btn-green">Share your recipe</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary btn-lg btn-orange">Custom meal plan</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary btn-lg btn-darkorange">Create grocery list</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary btn-lg btn-lightgreen">Cooking Tips & Tricks</button>
+    </div>
+  </div>
+</div>
+
+<!-- CARDS -->
+<div class="container buttons-container">
+  <h2>Recommended recipes</h2>
+  <div class="row">
+    <div class="col col-card">
+      <div class="card" style="width: 14rem; height: 14rem;">
+        <img src="/static/images/beans.jpg" class="card-img-top" alt="beans">
+        <div class="card-body">
+          <p class="card-text">Russian salad</p>
+        </div>
+      </div>
+      </div>
+      <div class="col col-card">
+        <div class="card" style="width: 14rem; height: 14rem;">
+          <img src="/static/images/chickensomething.jpg" class="card-img-top" alt="beans">
+          <div class="card-body">
+            <p class="card-text">Russian salad</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col col-card">
+        <div class="card" style="width: 14rem; height: 14rem;">
+          <img src="/static/images/chickensomething.jpg" class="card-img-top" alt="beans">
+          <div class="card-body">
+            <p class="card-text">Russian salad</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col col-card">
+        <div class="card" style="width: 14rem; height: 14rem;">
+          <img src="/static/images/spaghetti.jpg" class="card-img-top" alt="beans">
+          <div class="card-body">
+            <p class="card-text">Russian salad</p>
+          </div>
+        </div>
+      </div>
+      <div class="col col-card">
+        <div class="card" style="width: 14rem; height: 14rem;">
+          <img src="/static/images/beans.jpg" class="card-img-top" alt="beans">
+          <div class="card-body">
+            <p class="card-text">Russian salad</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
 {% endblock %}
