@@ -76,11 +76,65 @@
     margin-bottom: 2rem;
 }
 
-.card p {
+.card-paragraph {
     color: #252525;
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
     line-height: 24px; /* 120% */
+    margin: 0;
 }
+
+.row-card {
+    margin-top: 2rem;
+}
+
+.timer-text {
+    color: #DC582A;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 136.523%; /* 27.305px */
+    margin: 0;
+}
+
+
+.like-section {
+    float: right;
+}
+
+.comment-section {
+    float:right;
+    margin-right: 0.5rem;
+}
+
+.card-img-top {
+    height: 100%;
+}
+
+.button-section {
+    margin: 8rem;
+}
+
+.btn-loadmore {
+    display: flex;
+    margin: auto;
+    display: flex;
+    width: 400px;
+    padding: 13px 0px 12px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #509E2F;
+    border: #509E2F;
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
