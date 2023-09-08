@@ -138,3 +138,6 @@
     line-height: normal;
 }
 
+.btn-link {
+    text-decoration: none;
+}

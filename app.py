@@ -119,3 +119,26 @@ def logout():
 @login_required
 def account():
     return render_template("account.html")
+
+
+@app.route("/share", methods=["GET", "POST"])
+@login_required
+def share():
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        title = request.form.get("title")
+        recipe = request.form.get("recipe")
+
+        # check input title and recipe
+        if not title or not recipe:
+            return apology("must provide title & recipe", 403)
+
+        # create a new recipe with user's input
+        db.execute("INSERT INTO recipes (title, recipe, user_id) VALUES (?, ?, ?)",
+                   title, recipe, session["user_id"])
+
+        return redirect("/")
+
+    else:
+        return render_template("share.html")
