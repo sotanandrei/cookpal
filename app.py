@@ -61,7 +61,7 @@ def register():
                    username, generate_password_hash(password))
 
         # Redirect user to login form
-        return redirect("/")
+        return redirect("/login")
 
     else:
         return render_template("register.html")
@@ -113,3 +113,9 @@ def logout():
 
     # Redirect user to login form
     return redirect("/")
+
+
+@app.route("/account")
+@login_required
+def account():
+    return render_template("account.html")

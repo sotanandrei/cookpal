@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block style%}
+<link href="/static/css/register.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block main%}
+<form action="/logout">
+    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Log out
+    </button>
+</form>
+{% endblock %}
