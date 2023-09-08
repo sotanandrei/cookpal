@@ -17,3 +17,12 @@
     margin-top: 2rem;
 }
 
+.container {
+    margin-top: 1rem;
+    border-radius: 0.25rem;
+
+}
+
+.register-btn {
+    color: white!important;
+}
