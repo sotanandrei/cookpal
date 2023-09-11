@@ -2,9 +2,10 @@ import os
 
 from cs50 import SQL
 from datetime import datetime
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.utils import secure_filename
 
 from helpers import apology, login_required, lookup, usd
 
@@ -16,8 +17,19 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+# Configure UPLOAD_FOLDER
+UPLOAD_FOLDER = 'static/uploads'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///finalproject.db")
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.after_request
@@ -134,11 +146,31 @@ def share():
         if not title or not recipe:
             return apology("must provide title & recipe", 403)
 
-        # create a new recipe with user's input
-        db.execute("INSERT INTO recipes (title, recipe, user_id) VALUES (?, ?, ?)",
-                   title, recipe, session["user_id"])
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            return apology("no file part", 403)
+        file = request.files['file']
 
-        return redirect("/")
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            return apology("no selected file", 403)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+        # create a new recipe with user's input
+        db.execute("INSERT INTO recipes (title, recipe, image, user_id) VALUES (?, ?, ?, ?)",
+                   title, recipe, filename, session["user_id"])
+
+        return redirect("/recipes")
 
     else:
         return render_template("share.html")
+
+
+@app.route("/recipes", methods=["GET"])
+def recipes():
+    # query database for all recipes
+    recipes = db.execute("SELECT * FROM recipes")
+    return render_template("recipes.html", recipes=recipes)

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block style%}
+<link href="/static/css/recipes.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}
+    Recipes & Menus
+{% endblock %}
+
+{% block main%}
+    <div class="container recipes-ctn">
+    {% for recipe in recipes %}
+        <h5>{{recipe["title"]}}</h5>
+        <p>{{recipe["recipe"]}}</p>
+        <img src="/static/uploads/{{ recipe['image']}}" alt="Imagine" class="recipes-img">
+    {% endfor %}
+    </div>
+{% endblock %}

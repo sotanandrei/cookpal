@@ -11,7 +11,7 @@
 {% block main %}
 <div class="container share-container">
     <h1>Share your recipe!</h1>
-    <form class="share-form" action="/share" method="post">
+    <form class="share-form" action="/share" method="post" enctype="multipart/form-data">
     <!-- Title input -->
     <div class="form-outline mb-4">
       <input type="text" id="title" name="title" class="form-control" />
@@ -22,6 +22,12 @@
     <div class="form-outline mb-4">
       <textarea class="form-control" id="recipe" name="recipe" rows="4"></textarea>
       <label class="form-label" for="recipe">Recipe</label>
+    </div>
+
+    <!-- Image input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="image">Select an image</label><br>
+      <input type="file" id="file" name="file">
     </div>
   
     <!-- Submit button -->
