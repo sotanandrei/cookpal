@@ -1,20 +1,70 @@
-{% extends "layout.html" %}
-
-{% block style%}
-<link href="/static/css/recipes.css" rel="stylesheet">
-{% endblock %}
-
-
-{% block title %}
-    Recipes & Menus
-{% endblock %}
-
-{% block main%}
-    <div class="container recipes-ctn">
+{% extends "layout.html" %} {% block style%}
+<link href="/static/css/recipes.css" rel="stylesheet" />
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+{% endblock %} {% block title %} Recipes & Menus {% endblock %} {% block script
+%}
+<script src="/static/js/recipes.js"></script>
+{% endblock %}{% block main%}
+<div class="container recipes-container">
+  <div class="row">
     {% for recipe in recipes %}
-        <h5>{{recipe["title"]}}</h5>
-        <p>{{recipe["recipe"]}}</p>
-        <img src="/static/uploads/{{ recipe['image']}}" alt="Imagine" class="recipes-img">
-    {% endfor %}
+    <div class="col">
+      <div class="cont_principal">
+        <div class="cont_central">
+          <div class="cont_modal" id="cont_modal{{recipe['id']}}">
+            <div class="cont_photo">
+              <div class="cont_img_back">
+                <img src="/static/uploads/{{recipe['image']}}" alt="" />
+              </div>
+
+              <div class="cont_icon_right">
+                <a href="#"> <i class="material-icons">&#xE8E7;</i></a>
+              </div>
+              <div class="cont_detalles">
+                <h3>{{recipe['title']}}</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aliquam sagittis est est aliquam, sed faucibus massa lobortis.
+                  Maecenas non est justo.
+                </p>
+              </div>
+            </div>
+            <div class="cont_text_ingredients">
+              <div class="cont_over_hidden">
+                <div class="cont_tabs">
+                  <ul>
+                    <li>
+                      <a href="#"><h5>INGREDIENTS</h5></a>
+                    </li>
+                    <li>
+                      <a href="#"><h5>PREPARATION</h5></a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="cont_text_det_preparation">
+                  <div class="cont_title_preparation">
+                    <p>{{recipe['title']}}</p>
+                  </div>
+                  <div class="cont_info_preparation">
+                    <p>{{recipe['recipe']}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cont_btn_open_dets">
+                <a href="#e" onclick="open_close()"
+                  ><i class="material-icons">&#xE314;</i></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
