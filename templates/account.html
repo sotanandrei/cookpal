@@ -1,16 +1,42 @@
-{% extends "layout.html" %}
-
-{% block style%}
-<link href="/static/css/register.css" rel="stylesheet">
-{% endblock %}
-
-{% block title %}
-    Account
-{% endblock %}
-
-{% block main%}
-<form action="/logout">
-    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Log out
+{% extends "layout.html" %} {% block style%}
+<link href="/static/css/account.css" rel="stylesheet" />
+{% endblock %} {% block title %} Account {% endblock %} {% block main%}
+<div class="container">
+  <h4>Shared recipes</h4>
+  <div class="row">
+    {% for recipe in recipes%}
+    <div class="col col-card">
+      <div class="card" style="width: 18rem; height: 18rem">
+        <img
+          src="/static/uploads/{{recipe['image']}}"
+          class="card-img-top"
+          alt="beans"
+        />
+        <div class="card-body">
+          <p class="card-text card-paragraph">{{recipe['title']}}</p>
+          <p class="card-text timer-text">
+            40 min
+            <span class="like-section"
+              ><img src="/static/images/like.png" alt="Like" /></span
+            ><span class="comment-section"
+              ><img src="/static/images/comments.png" alt="Comment"
+            /></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="container">
+  <form action="/logout">
+    <button
+      type="submit"
+      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+    >
+      Log out
     </button>
-</form>
+  </form>
+</div>
+
 {% endblock %}

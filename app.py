@@ -130,7 +130,10 @@ def logout():
 @app.route("/account")
 @login_required
 def account():
-    return render_template("account.html")
+    # query database for all recipes
+    recipes = db.execute(
+        "SELECT * FROM recipes WHERE user_id = ?", session["user_id"])
+    return render_template("account.html", recipes=recipes)
 
 
 @app.route("/share", methods=["GET", "POST"])
