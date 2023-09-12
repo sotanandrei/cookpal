@@ -26,7 +26,7 @@
 
 .cont_modal {
   position: relative;
-  width: 300px;
+  max-width: 100%;
   height: 400px;
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -77,15 +77,15 @@
 
 .cont_text_ingredients {
   position: absolute;
-  width: 0px;
+  width: 75%;
   top: 0px;
-  left: 290px;
   margin-left: 10px;
   height: 400px;
   float: left;
   border-radius: 5px;
-  z-index: 3;
-  box-shadow: 1px 1px 20px -5px rgba(0, 0, 0, 0.2);
+  left: 285px;
+  z-index: 1;
+  box-shadow: 15px 20px 70px -5px rgba(0, 0, 0, 0.2);
 
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbf9f9+28,e8eaed+100 */
   background: rgb(251, 249, 249); /* Old browsers */
@@ -294,31 +294,6 @@
   margin-top: 0px;
 }
 
-.cont_btn_open_dets {
-  position: absolute;
-  right: -15px;
-  top: 50%;
-}
-.cont_btn_open_dets > a {
-  display: block;
-  padding-top: -5px;
-  width: 30px;
-  height: 30px;
-  background-color: #ed2460;
-  border-radius: 50%;
-  color: #fff;
-  box-shadow: 0px 0px 20px -2px rgba(237, 36, 96, 1);
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-  transition: all 0.5s;
-  transform: rotate(180deg);
-}
-
-.cont_btn_open_dets > a > i {
-  margin-top: 4px;
-}
-
 .cont_title_preparation {
   position: relative;
   float: left;
@@ -371,37 +346,8 @@
   width: 410px;
 }
 
-.cont_modal_active > .cont_text_ingredients > .cont_btn_open_dets > a {
-  transform: rotate(0deg);
-}
-.cont_modal_active > .cont_text_ingredients {
-  width: 410px;
-  left: 285px;
-  z-index: 1;
-  box-shadow: 15px 20px 70px -5px rgba(0, 0, 0, 0.2);
-}
-.cont_modal_active {
-  width: 700px;
-}
-
-.cont_modal_active > .cont_photo {
-  box-shadow: 25px 10px 70px -5px rgba(0, 0, 0, 0.3);
-}
-
-.cont_modal_active > .cont_photo > .cont_mins > .sub_mins {
-  opacity: 1;
-}
-
-.cont_modal_active > .cont_photo > .cont_servings {
-  opacity: 1;
-}
-
-.cont_modal_active > .cont_photo > .cont_detalles {
-  bottom: 0px;
-}
-
 .row {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 .col {
