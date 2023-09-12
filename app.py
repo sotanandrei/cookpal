@@ -141,10 +141,11 @@ def share():
     if request.method == "POST":
         title = request.form.get("title")
         recipe = request.form.get("recipe")
+        ingredients = request.form.get("ingredients")
 
         # check input title and recipe
-        if not title or not recipe:
-            return apology("must provide title & recipe", 403)
+        if not title or not recipe or not ingredients:
+            return apology("must provide title, recipe & ingredients", 403)
 
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -160,8 +161,8 @@ def share():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         # create a new recipe with user's input
-        db.execute("INSERT INTO recipes (title, recipe, image, user_id) VALUES (?, ?, ?, ?)",
-                   title, recipe, filename, session["user_id"])
+        db.execute("INSERT INTO recipes (title, ingredients, recipe, image, user_id) VALUES (?, ?, ?, ?, ?)",
+                   title, ingredients, recipe, filename, session["user_id"])
 
         return redirect("/recipes")
 
