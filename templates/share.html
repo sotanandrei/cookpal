@@ -1,35 +1,48 @@
-{% extends "layout.html" %}
-
-{% block style%}
-<link href="/static/css/share.css" rel="stylesheet">
-{% endblock %}
-
-{% block title %}
-    Share
-{% endblock %}
-
-{% block main %}
+{% extends "layout.html" %} {% block style%}
+<link href="/static/css/share.css" rel="stylesheet" />
+{% endblock %} {% block title %} Share {% endblock %} {% block main %}
 <div class="container share-container">
-    <h1>Share your recipe!</h1>
-    <form class="share-form" action="/share" method="post" enctype="multipart/form-data">
+  <h1>Share your recipe!</h1>
+  <form
+    class="share-form"
+    action="/share"
+    method="post"
+    enctype="multipart/form-data"
+  >
     <!-- Title input -->
     <div class="form-outline mb-4">
       <input type="text" id="title" name="title" class="form-control" />
       <label class="form-label" for="title">Title</label>
     </div>
-  
+
+    <!-- Ingredients input -->
+    <div class="form-outline mb-4">
+      <textarea
+        class="form-control"
+        id="ingredients"
+        name="ingredients"
+        rows="1"
+      ></textarea>
+      <label class="form-label" for="recipe">Ingredients</label>
+    </div>
+
     <!-- Recipe input -->
     <div class="form-outline mb-4">
-      <textarea class="form-control" id="recipe" name="recipe" rows="4"></textarea>
+      <textarea
+        class="form-control"
+        id="recipe"
+        name="recipe"
+        rows="4"
+      ></textarea>
       <label class="form-label" for="recipe">Recipe</label>
     </div>
 
     <!-- Image input -->
     <div class="form-outline mb-4">
-      <label class="form-label" for="image">Select an image</label><br>
-      <input type="file" id="file" name="file">
+      <label class="form-label" for="image">Select an image</label><br />
+      <input type="file" id="file" name="file" />
     </div>
-  
+
     <!-- Submit button -->
     <button type="submit" class="btn btn-primary btn-block mb-4">Share</button>
   </form>

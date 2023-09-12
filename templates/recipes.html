@@ -1,20 +1,47 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block style%}
+<link href="/static/css/recipes.css" rel="stylesheet" />
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+{% endblock %} {% block title %} Recipes & Menus {% endblock %} {% block main%}
+<div class="container recipes-container">
+  {% for recipe in recipes %}
+  <div class="row">
+    <div class="cont_modal">
+      <div class="cont_photo">
+        <div class="cont_img_back">
+          <img src="/static/uploads/{{recipe['image']}}" alt="" />
+        </div>
 
-{% block style%}
-<link href="/static/css/recipes.css" rel="stylesheet">
-{% endblock %}
+        <div class="cont_icon_right">
+          <a href="#"> <i class="material-icons">&#xE8E7;</i></a>
+        </div>
+      </div>
+      <div class="cont_text_ingredients">
+        <div class="cont_over_hidden">
+          <div class="cont_tabs">
+            <h4>{{recipe['title']}}</h4>
+          </div>
 
-
-{% block title %}
-    Recipes & Menus
-{% endblock %}
-
-{% block main%}
-    <div class="container recipes-ctn">
-    {% for recipe in recipes %}
-        <h5>{{recipe["title"]}}</h5>
-        <p>{{recipe["recipe"]}}</p>
-        <img src="/static/uploads/{{ recipe['image']}}" alt="Imagine" class="recipes-img">
-    {% endfor %}
+          <div class="cont_text_det_preparation">
+            <div class="cont_title_preparation">
+              <h5>Ingredients</h5>
+            </div>
+            <div class="cont_info_preparation">
+              <p>{{recipe['ingredients']}}</p>
+            </div>
+            <div class="cont_title_preparation">
+              <h5>Preparation</h5>
+            </div>
+            <div class="cont_info_preparation">
+              <p>{{recipe['recipe']}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}
