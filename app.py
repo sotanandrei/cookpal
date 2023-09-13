@@ -178,3 +178,8 @@ def recipes():
     # query database for all recipes
     recipes = db.execute("SELECT * FROM recipes")
     return render_template("recipes.html", recipes=recipes)
+
+
+@app.route("/list", methods=["GET"])
+def list():
+    return render_template("list.html")

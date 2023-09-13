@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap");
+
+.nav-link {
+  color: var(--Black, #253d4e);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.nav-link:hover {
+  color: #509e2f;
+}
+
+#header {
+  padding: 20px 20px 30px;
+  margin: auto;
+  text-align: center;
+}
+#inputText {
+  border-radius: 4px;
+  border: solid gray 2px;
+  padding: 5px;
+  margin-bottom: 1rem;
+}
+button {
+  display: inline-block;
+  background-color: gray;
+  border: solid gray 2px;
+  border-radius: 4px;
+  color: white;
+  padding: 5px;
+}
+
+#list {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#list li {
+  text-decoration: none;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+}
+#list li:nth-child(odd) {
+  background-color: #dedede;
+}
+#list li:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.check {
+  text-decoration: line-through;
+  background-color: black !important;
+  color: white;
+}
+
+button.close {
+  color: black;
+  background: transparent;
+  border: none !important;
+}
+
+.grocery-container {
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  border: 1px gray solid;
+  border-radius: 10px;
+}
+
+.grocery-container h2 {
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 1rem;
+}
+
+.material-symbols-outlined {
+  float: right;
+}
