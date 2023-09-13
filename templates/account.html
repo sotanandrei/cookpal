@@ -1,33 +1,48 @@
 {% extends "layout.html" %} {% block style%}
 <link href="/static/css/account.css" rel="stylesheet" />
 {% endblock %} {% block title %} Account {% endblock %} {% block main%}
-<div class="container">
+<div class="container recipes-container">
   <h4>Shared recipes</h4>
+  {% for recipe in recipes %}
   <div class="row">
-    {% for recipe in recipes%}
-    <div class="col col-card">
-      <div class="card" style="width: 18rem; height: 18rem">
-        <img
-          src="/static/uploads/{{recipe['image']}}"
-          class="card-img-top"
-          alt="beans"
-        />
-        <div class="card-body">
-          <p class="card-text card-paragraph">{{recipe['title']}}</p>
-          <p class="card-text timer-text">
-            40 min
-            <span class="like-section"
-              ><img src="/static/images/like.png" alt="Like" /></span
-            ><span class="comment-section"
-              ><img src="/static/images/comments.png" alt="Comment"
-            /></span>
-          </p>
+    <div class="cont_modal">
+      <div class="cont_photo">
+        <div class="cont_img_back">
+          <img src="/static/uploads/{{recipe['image']}}" alt="" />
+        </div>
+
+        <div class="cont_icon_right">
+          <a href="#"> <i class="material-icons">&#xE8E7;</i></a>
+        </div>
+      </div>
+      <div class="cont_text_ingredients">
+        <div class="cont_over_hidden">
+          <div class="cont_tabs">
+            <h4>{{recipe['title']}}</h4>
+          </div>
+
+          <div class="cont_text_det_preparation">
+            <div class="cont_title_preparation">
+              <h5>Ingredients</h5>
+            </div>
+            <div class="cont_info_preparation">
+              <p>{{recipe['ingredients']}}</p>
+            </div>
+            <div class="cont_title_preparation">
+              <h5>Preparation</h5>
+            </div>
+            <div class="cont_info_preparation">
+              <p>{{recipe['recipe']}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    {% endfor %}
   </div>
+  {% endfor %}
 </div>
+<div class="container meal-container"><h4>Grocery list</h4></div>
+
 <div class="container">
   <form action="/logout">
     <button
