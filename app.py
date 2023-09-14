@@ -1,7 +1,7 @@
 import os
 
 from cs50 import SQL
-from datetime import datetime
+from datetime import date
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -133,7 +133,11 @@ def account():
     # query database for all recipes
     recipes = db.execute(
         "SELECT * FROM recipes WHERE user_id = ?", session["user_id"])
-    return render_template("account.html", recipes=recipes)
+
+    # query database for all tips
+    tips = db.execute(
+        "SELECT * FROM tips WHERE user_id = ?", session["user_id"])
+    return render_template("account.html", recipes=recipes, tips=tips)
 
 
 @app.route("/share", methods=["GET", "POST"])
@@ -173,11 +177,43 @@ def share():
         return render_template("share.html")
 
 
+@app.route("/sharetips", methods=["GET", "POST"])
+@login_required
+def sharetips():
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        title = request.form.get("title")
+        post = request.form.get("post")
+        now = date.today()
+
+        # check input title and recipe
+        if not title or not post:
+            return apology("must provide title, recipe & ingredients", 403)
+
+        # create a new recipe with user's input
+        db.execute("INSERT INTO tips (title, post, user_id, time) VALUES (?, ?, ?, ?)",
+                   title, post, session["user_id"], now)
+
+        return redirect("/")
+
+    else:
+        return render_template("sharetips.html")
+
+
 @app.route("/recipes", methods=["GET"])
 def recipes():
     # query database for all recipes
     recipes = db.execute("SELECT * FROM recipes")
     return render_template("recipes.html", recipes=recipes)
+
+
+@app.route("/tips", methods=["GET"])
+def tips():
+    # query database for all tips
+    tips = db.execute(
+        "SELECT tips.id, title, post, username, time FROM tips JOIN users ON users.id = tips.user_id")
+
+    return render_template("tips.html", tips=tips)
 
 
 @app.route("/list", methods=["GET"])

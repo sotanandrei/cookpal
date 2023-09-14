@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap");
+
+.nav-link {
+  color: var(--Black, #253d4e);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.nav-link:hover {
+  color: #509e2f;
+}
+
+.recipes-container {
+  margin-top: 1rem;
+}
+
+.cont_modal {
+  position: relative;
+  max-width: 70%;
+  height: 20%;
+  border: 1px gray solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin: auto;
+}
+
+.row {
+  margin-top: 1rem;
+}

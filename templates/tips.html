@@ -1,0 +1,23 @@
+{% extends "layout.html" %} {% block style%}
+<link href="/static/css/tips.css" rel="stylesheet" />
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+{% endblock %} {% block title %} Tips & Tricks {% endblock %} {% block main%}
+<div class="container recipes-container">
+  {% for tip in tips %}
+  <div class="row">
+    <div class="cont_modal">
+      <p>
+        Tip#{{tip['id']}} from
+        <span style="color: green"><b>{{tip['username']}}</b></span> shared on
+        <i>{{tip['time']}}</i>
+      </p>
+      <h4>{{tip['title']}}</h4>
+      <p>{{tip['post']}}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
