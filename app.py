@@ -130,6 +130,8 @@ def logout():
 @app.route("/account")
 @login_required
 def account():
+    username = db.execute(
+        "SELECT username FROM users WHERE id = ?", session["user_id"])
     # query database for all recipes
     recipes = db.execute(
         "SELECT * FROM recipes WHERE user_id = ?", session["user_id"])
@@ -137,7 +139,7 @@ def account():
     # query database for all tips
     tips = db.execute(
         "SELECT * FROM tips WHERE user_id = ?", session["user_id"])
-    return render_template("account.html", recipes=recipes, tips=tips)
+    return render_template("account.html", recipes=recipes, tips=tips, username=username)
 
 
 @app.route("/share", methods=["GET", "POST"])

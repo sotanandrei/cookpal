@@ -1,6 +1,21 @@
 {% extends "layout.html" %} {% block style%}
 <link href="/static/css/account.css" rel="stylesheet" />
-{% endblock %} {% block title %} Account {% endblock %} {% block main%}
+{% endblock %} {% block main%}
+<div class="container account-container">
+  <h4>
+    Hello, <span style="color: green">{{username[0]['username']}}</span>
+    <span style="float: right">
+      <form action="/logout">
+        <button
+          type="submit"
+          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+        >
+          Log out
+        </button>
+      </form>
+    </span>
+  </h4>
+</div>
 <div class="container recipes-container">
   <h4>Shared recipes</h4>
   {% for recipe in recipes %}
@@ -51,17 +66,6 @@
     </div>
   </div>
   {% endfor %}
-</div>
-
-<div class="container button-container">
-  <form action="/logout">
-    <button
-      type="submit"
-      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-    >
-      Log out
-    </button>
-  </form>
 </div>
 
 {% endblock %}
