@@ -21,7 +21,12 @@
       <div class="cont_text_ingredients">
         <div class="cont_over_hidden">
           <div class="cont_tabs">
-            <h4>{{recipe['title']}}</h4>
+            <h4>
+              {{recipe['title']}}
+              <span style="font-size: 18px"
+                >by <b>{{recipe['username']}}</b></span
+              >
+            </h4>
           </div>
 
           <div class="cont_text_det_preparation">

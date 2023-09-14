@@ -1,7 +1,7 @@
 import os
 
 from cs50 import SQL
-from datetime import date
+from datetime import date, datetime
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -149,6 +149,7 @@ def share():
         title = request.form.get("title")
         recipe = request.form.get("recipe")
         ingredients = request.form.get("ingredients")
+        now = datetime.now()
 
         # check input title and recipe
         if not title or not recipe or not ingredients:
@@ -168,8 +169,8 @@ def share():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         # create a new recipe with user's input
-        db.execute("INSERT INTO recipes (title, ingredients, recipe, image, user_id) VALUES (?, ?, ?, ?, ?)",
-                   title, ingredients, recipe, filename, session["user_id"])
+        db.execute("INSERT INTO recipes (title, ingredients, recipe, image, user_id, datetime) VALUES (?, ?, ?, ?, ?, ?)",
+                   title, ingredients, recipe, filename, session["user_id"], now)
 
         return redirect("/recipes")
 
@@ -194,7 +195,7 @@ def sharetips():
         db.execute("INSERT INTO tips (title, post, user_id, time) VALUES (?, ?, ?, ?)",
                    title, post, session["user_id"], now)
 
-        return redirect("/")
+        return redirect("/tips")
 
     else:
         return render_template("sharetips.html")
@@ -203,7 +204,8 @@ def sharetips():
 @app.route("/recipes", methods=["GET"])
 def recipes():
     # query database for all recipes
-    recipes = db.execute("SELECT * FROM recipes")
+    recipes = db.execute(
+        "SELECT username, title, ingredients, recipe, image FROM recipes JOIN users ON recipes.user_id = users.id ORDER BY datetime DESC")
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -211,7 +213,7 @@ def recipes():
 def tips():
     # query database for all tips
     tips = db.execute(
-        "SELECT tips.id, title, post, username, time FROM tips JOIN users ON users.id = tips.user_id")
+        "SELECT tips.id, title, post, username, time FROM tips JOIN users ON users.id = tips.user_id ORDER BY time DESC")
 
     return render_template("tips.html", tips=tips)
 
