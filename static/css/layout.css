@@ -1,0 +1,27 @@
+@media (max-width: 992px) {
+  .ms-4 {
+    margin: 0 !important;
+  }
+  .ms-3 {
+    margin: 0 !important;
+  }
+  .ms-5 {
+    margin: 0 !important;
+  }
+  .nav h5 {
+    font-size: 1rem;
+  }
+  footer .nav-link {
+    font-size: 12px;
+  }
+  footer p {
+    font-size: 12px;
+  }
+  footer img {
+    width: 60% !important;
+  }
+  .btn-loadmore {
+    width: 200px !important;
+    margin: 6rem auto !important;
+  }
+}
