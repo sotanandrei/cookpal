@@ -28,7 +28,7 @@
 .cont_modal {
   position: relative;
   max-width: 100%;
-  max-height: 400px;
+  height: 400px;
 }
 
 .cont_photo {
@@ -193,4 +193,41 @@
 
 .col {
   margin-top: 1rem;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 992px) {
+  .row {
+    margin-top: 3rem;
+  }
+  .cont_modal {
+    width: 400px;
+    height: 800px;
+    margin: auto;
+  }
+  .cont_photo {
+    width: 100%;
+    height: 15rem;
+  }
+  .cont_text_ingredients {
+    width: 75%;
+    height: 600px;
+    left: 40px;
+    top: 210px;
+  }
+  .cont_tabs {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  .cont_over_hidden {
+    height: 600px;
+    width: 100%;
+  }
+  .cont_text_det_preparation {
+    height: 600px;
+  }
+  .cont_img_back > img {
+    width: 100%;
+    height: auto;
+  }
 }
